@@ -1,6 +1,12 @@
 <template>
   <div class="empty task_view" v-if="!Store.state.current">
-    <p class="flow-text">empty</p>
+    <p class="flow-text">No task choosed</p>
+    <p class="flow-text">Choose one from list or create a new task</p>
+    <a
+      class="btn-floating btn-large waves-effect waves-light btn"
+      @click="changeCreatMode"
+      >+
+    </a>
   </div>
   <div class="task_view" v-else>
     <h1>{{ Store.state.current.name }}</h1>
@@ -13,19 +19,21 @@
 </template>
 <script setup>
 import Store from "@/store";
+function changeCreatMode() {
+  Store.state.create_mode = !Store.state.create_mode;
+}
 </script>
 <style lang="scss" scoped>
 .task_view {
-  width: 70%;
+  width: 1000px;
   display: flex;
-  height: 100%;
-  flex-direction: column;
+  height: auto;
+  justify-content: center;
+  row-gap: 100px;
   align-items: center;
-  align-content: space-between;
-  flex-wrap: wrap;
-  padding: 100px 50px;
-  p {
-    margin-left: 100px;
-  }
+  flex-direction: column;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
 }
 </style>

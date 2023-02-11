@@ -2,24 +2,16 @@ import Vuex from "vuex";
 
 const Store = new Vuex.Store({
   state: {
-    tasks: [
-      {
-        date: "01/02/01",
-        name: "Test",
-        description: "lorem ipsum",
-      },
-      {
-        date: "01/02/02",
-        name: "Test2",
-        description: "lorem ipsum",
-      },
-      {
-        date: "01/02/03",
-        name: "Test",
-        description: "lorem ipsum",
-      },
-    ],
+    tasks: [],
     current: null,
+    create_mode: false,
+    edit_mode: false,
+    current_id: null,
+    sortByDate: () => {
+      if (Store.state.tasks.length > 1) {
+        Store.state.tasks.sort((a, b) => new Date(a.date) - new Date(b.date));
+      }
+    },
   },
 });
 
