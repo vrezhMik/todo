@@ -31,7 +31,6 @@ function remove() {
     Store.state.current_id = null;
     Store.state.current = null;
   }
-  console.log(Store.state.current_id, props.id);
   Store.state.tasks = Store.state.tasks
     .slice(0, props.id)
     .concat(Store.state.tasks.slice(props.id + 1));
